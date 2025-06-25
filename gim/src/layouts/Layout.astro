@@ -1,0 +1,54 @@
+---
+import Navbar from "../components/Navbar.astro";
+import Sidebar from "../components/Sidebar.astro";
+
+const { showNavbar = true, showSidebar = true } = Astro.props;
+
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>GIM</title>
+  </head>
+  <body>
+    {showNavbar && <Navbar />}
+    {showSidebar && <Sidebar />}
+    <slot />
+  </body>
+</html>
+
+<style>
+   * {
+    margin: 0;
+    padding: 0;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+	html {
+    scroll-behavior: smooth;
+    background: #001117;
+  }
+
+	body {
+    min-height: 100dvh;
+  }
+
+	h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    text-wrap: balance;
+  }
+</style>
