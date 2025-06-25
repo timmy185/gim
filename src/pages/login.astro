@@ -1,0 +1,89 @@
+---
+import { Image } from "astro:assets";
+import logo from "../assets/logo.webp";
+import Layout from "../layouts/Layout.astro";
+import "../styles/global.css";
+---
+
+<Layout showNavbar={false} showSidebar={false}>
+  <main class="flex items-center justify-center h-dvh">
+    <article
+      class="bg-[#002633] rounded-sm shadow-lg p-8 md:p-10 max-w-sm w-full flex flex-col items-center gap-6 border border-[#37FFC7]/10"
+    >
+      <div class="flex flex-col items-center gap-2 mb-4 w-full">
+        <picture>
+          <Image
+            src={logo}
+            alt="Logo GIM"
+            class="w-18 h-9"
+            width={100}
+            height={100}
+            loading="eager"
+          />
+        </picture>
+        <h1 class="text-2xl font-light text-[#37FFC7]">Iniciar Sesión</h1>
+      </div>
+      <form class="w-full flex flex-col gap-4">
+        <input
+          type="text"
+          placeholder="Usuario"
+          class="w-full px-4 py-2 rounded bg-[#002633] border border-[#37FFC7]/20 text-[#37FFC7] placeholder-[#37FFC7]/40 focus:outline-none focus:border-[#37FFC7] transition"
+        />
+        <input
+          type="password"
+          placeholder="Contraseña"
+          class="w-full px-4 py-2 rounded bg-[#002633] border border-[#37FFC7]/20 text-[#37FFC7] placeholder-[#37FFC7]/40 focus:outline-none focus:border-[#37FFC7] transition"
+        />
+        <button
+          type="submit"
+          class="mt-4 w-full bg-[#37FFC7] text-[#001117] font-bold text-lg rounded-lg py-3 hover:bg-[#28CA9E] transition shadow-md"
+          >Iniciar Sesión</button
+        >
+      </form>
+      <span class="text-xs text-[#37FFC7] hover:underline mt-2"
+        >¿Olvidaste tu contraseña?</span
+      >
+    </article>
+  </main>
+</Layout>
+
+<script>
+  // Usuarios ficticios
+  const users = [
+    { email: "w2tcreative@gmail.com", password: "123456" },
+    { email: "ttcreativesolutionss@gmail.com", password: "123456" },
+  ];
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.querySelector("form");
+    if (!form) return;
+    const userInput = form.querySelector('input[type="text"]');
+    const passInput = form.querySelector('input[type="password"]');
+    if (!userInput || !passInput) return;
+
+    // Crear o seleccionar el contenedor de error
+    let errorDiv = document.createElement("div");
+    errorDiv.style.color = "#FF4F4F";
+    errorDiv.style.marginTop = "8px";
+    errorDiv.style.fontSize = "0.95em";
+    errorDiv.style.textAlign = "center";
+    form.appendChild(errorDiv);
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const email =
+        userInput instanceof HTMLInputElement ? userInput.value.trim() : "";
+      const password =
+        passInput instanceof HTMLInputElement ? passInput.value : "";
+
+      const found = users.find(
+        (u) => u.email === email && u.password === password
+      );
+      if (found) {
+        window.location.href = "/";
+      } else {
+        errorDiv.textContent = "Usuario o contraseña incorrectos";
+      }
+    });
+  });
+</script>
