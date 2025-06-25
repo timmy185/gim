@@ -2,7 +2,7 @@
   class="fixed top-[64px] left-0 h-[calc(100dvh-64px)] w-16 md:w-20 bg-[#002633] flex flex-col items-center py-6 z-20"
 >
   <nav id="sidebar-nav" class="flex flex-col gap-7 mt-8 w-full items-center">
-    <a href="/" class="sidebar-btn group" data-index="0" aria-label="Home">
+    <a href="/home" class="sidebar-btn group" data-index="0" aria-label="Home">
       <span class="sidebar-border"></span>
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7 sidebar-icon"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M5 12l-2 0l9 -9l9 9l-2 0"></path><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7"></path><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"></path></svg>
     </a>
@@ -28,7 +28,7 @@
     </button>
   </nav>
   <div class="mt-auto w-full flex flex-col items-center">
-    <button
+    <a href="/"
       class="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-[#28CA9E]/10 transition-colors"
       aria-label="Logout"
     >
@@ -39,7 +39,7 @@
           <path d="M15 4H18C19.1046 4 20 4.89543 20 6L20 18C20 19.1046 19.1046 20 18 20H15M11 16L15 12M15 12L11 8M15 12H3" stroke="#28CA9E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
         </g>
       </svg>
-    </button>
+    </a>
   </div>
   <script>
   function updateSidebarActive() {
